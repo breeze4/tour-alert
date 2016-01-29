@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import AddTodo from './AddTodo.jsx';
+import AddTodo from './addTodo/AddTodo.jsx';
 import TodoList from './TodoList.jsx';
 import Footer from './Footer.jsx';
 import store from '../store';
