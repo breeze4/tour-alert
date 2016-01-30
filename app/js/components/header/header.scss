@@ -1,0 +1,10 @@
+.header-container.container-fluid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .navbar-header {
+    flex-grow: 3
+  }
+
+}

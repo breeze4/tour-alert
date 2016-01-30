@@ -1,12 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 
-const todo = (state, action) => {
+const band = (state, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case 'FOLLOW_BAND':
       return {
-        id: action.id,
-        text: action.text,
-        completed: false
+        band: action.band,
+        id: action.id
       };
     case 'TOGGLE_TODO':
       if (state.id !== action.id) {
@@ -22,16 +21,16 @@ const todo = (state, action) => {
   }
 };
 
-const todos = (state = [], action) => {
+const bands = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case 'FOLLOW_BAND':
       return [
         ...state,
-        todo(undefined, action)
+        band(undefined, action)
       ];
     case 'TOGGLE_TODO':
       return state.map(t =>
-          todo(t, action)
+          band(t, action)
       );
     default:
       return state;
@@ -50,9 +49,9 @@ const visibilityFilter = (
   }
 };
 
-const todoApp = combineReducers({
-  todos,
+const tourAlertApp = combineReducers({
+  bands,
   visibilityFilter
 });
 
-export default createStore(todoApp)
+export default createStore(tourAlertApp)

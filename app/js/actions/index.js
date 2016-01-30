@@ -1,4 +1,15 @@
-let nextTodoId = 0;
+
+
+let nextBandId = 0;
+
+
+export const followBand = (band) => {
+  return {
+    type: 'FOLLOW_BAND',
+    band: band,
+    id: nextBandId++
+  }
+};
 
 export const addTodo = (text) => {
   return {
