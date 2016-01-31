@@ -1,6 +1,13 @@
 .band-list {
 
   .band-list-item {
+    .band-list-item-link {
+      padding-left: 30px;
+      padding-right: 20px;
+    }
+    td {
+      vertical-align: middle;
+    }
 
     a .glyphicon {
       padding-right: 5px;

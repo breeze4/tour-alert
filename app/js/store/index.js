@@ -2,15 +2,16 @@ import { createStore, combineReducers } from 'redux';
 
 import moment from 'moment';
 
+const CURRENT_DATE = moment().format('YYYY MM DD');
 const INITIAL_STATE = [{
   band: 'Tool',
   id: '1',
-  nextDate: moment().format('YYYY MM DD'),
+  nextDate: CURRENT_DATE,
   link: 'http://toolband.com/tour/'
 },{
   band: 'Swallow the Sun',
   id: '2',
-  nextDate: moment().format('YYYY MM DD'),
+  nextDate: CURRENT_DATE,
   link: 'http://swallowthesun.net/#Tour'
 },{
   band: 'The Hotelier',
@@ -24,7 +25,9 @@ const band = (state, action) => {
     case 'FOLLOW_BAND':
       return {
         band: action.band,
-        id: action.id
+        id: action.id,
+        nextDate: CURRENT_DATE,
+        link: null
       };
     default:
       return state;
