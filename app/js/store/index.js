@@ -1,5 +1,24 @@
 import { createStore, combineReducers } from 'redux';
 
+import moment from 'moment';
+
+const INITIAL_STATE = [{
+  band: 'Tool',
+  id: '1',
+  nextDate: moment().format('YYYY MM DD'),
+  link: 'http://toolband.com/tour/'
+},{
+  band: 'Swallow the Sun',
+  id: '2',
+  nextDate: moment().format('YYYY MM DD'),
+  link: 'http://swallowthesun.net/#Tour'
+},{
+  band: 'The Hotelier',
+  id: '3',
+  nextDate: null,
+  link: 'http://thehotelier.tumblr.com/tour'
+}];
+
 const band = (state, action) => {
   switch (action.type) {
     case 'FOLLOW_BAND':
@@ -7,51 +26,25 @@ const band = (state, action) => {
         band: action.band,
         id: action.id
       };
-    case 'TOGGLE_TODO':
-      if (state.id !== action.id) {
-        return state;
-      }
-
-      return {
-        ...state,
-        completed: !state.completed
-      };
     default:
       return state;
   }
 };
 
-const bands = (state = [], action) => {
+const bands = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'FOLLOW_BAND':
       return [
         ...state,
         band(undefined, action)
       ];
-    case 'TOGGLE_TODO':
-      return state.map(t =>
-          band(t, action)
-      );
-    default:
-      return state;
-  }
-};
-
-const visibilityFilter = (
-  state = 'SHOW_ALL',
-  action
-) => {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter;
     default:
       return state;
   }
 };
 
 const tourAlertApp = combineReducers({
-  bands,
-  visibilityFilter
+  bands
 });
 
 export default createStore(tourAlertApp)

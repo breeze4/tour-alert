@@ -1,83 +1,46 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleTodo } from '../../actions';
-
-import ListFilter from './listFilter/ListFilter.jsx';
+import './followList.scss';
 
 const Band = ({
-    onClick,
-    completed,
-    band
+    band, nextDate, link
     }) => (
-    <li
-        onClick={onClick}
-        style={{
-      textDecoration:
-        completed ?
-          'line-through' :
-          'none'
-    }}
-        className={
-        completed ?
-          'completed' :
-          ''
-    }
+    <tr
+        className="band-list-item"
     >
-        {band}
-    </li>
+        <td>
+            <button className="btn btn-default">x</button>
+        </td>
+        <td>{band}</td>
+        <td>{nextDate}</td>
+        <td className="">
+            <a href={link}>
+            <i className="glyphicon glyphicon-new-window"></i>
+                 View</a>
+        </td>
+    </tr>
 );
 
 const FollowList = ({
-    bands,
-    onTodoClick
+    bands
     }) => (
     <div className="col-xs-8">
-        <ListFilter />
-        <ul className="list-group">
+        <table className="band-list table table-bordered table-striped">
             {bands.map(band =>
             <Band
                 key={band.id}
                 {...band}
-                onClick={() => onTodoClick(band.id)}
             />
                 )}
-        </ul>
+        </table>
     </div>
 );
 
-const getVisibleTodos = (todos,
-                         filter) => {
-    switch (filter) {
-        case 'SHOW_ALL':
-            return todos;
-        case 'SHOW_COMPLETED':
-            return todos.filter(
-                t => t.completed
-            );
-        case 'SHOW_ACTIVE':
-            return todos.filter(
-                t => !t.completed
-            );
+function select(state) {
+    return {
+        bands: state.bands
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        bands: getVisibleTodos(
-            state.bands,
-            state.visibilityFilter
-        )
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onTodoClick: (id) => {
-            dispatch(toggleTodo(id));
-        }
-    };
-};
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(FollowList);
+export default connect(select)(FollowList);

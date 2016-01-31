@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { followBand } from '../../actions';
 import './followBand.scss';
 
-let AddTodo = ({ dispatch }) => {
+let FollowBand = ({ dispatch }) => {
     let input;
 
     return (
@@ -28,4 +28,4 @@ let AddTodo = ({ dispatch }) => {
         </form>
     );
 };
-export default connect()(AddTodo);
+export default connect()(FollowBand);
