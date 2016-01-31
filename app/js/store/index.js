@@ -18,6 +18,11 @@ const INITIAL_STATE = [{
   id: '3',
   nextDate: null,
   link: 'http://thehotelier.tumblr.com/tour'
+},{
+  band: 'Avantasia',
+  id: '4',
+  nextDate: null,
+  link: null
 }];
 
 const band = (state, action) => {
