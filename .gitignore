@@ -51,6 +51,7 @@ node_modules
 # .idea/uiDesigner.xml
 
 # Gradle:
+/server/target
 # .idea/gradle.xml
 # .idea/libraries
 
@@ -77,4 +78,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 /server/dependency-reduced-pom.xml
-
+/server/target/
