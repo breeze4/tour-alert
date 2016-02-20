@@ -4,7 +4,8 @@ module.exports = {
         html: "./app/index.html"
     },
     output: {
-        path: __dirname + "/dist",
+        path: __dirname + "/server/src/main/resources/ui/dist",
+        //path: __dirname + "/dist",
         filename: "./js/app.js"
     },
     module: {
